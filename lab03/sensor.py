@@ -1,5 +1,5 @@
-git status
-tc=int(input())
+
+tc=float(input())
 n=int(input())
 count_input=0
 count_errors=0
