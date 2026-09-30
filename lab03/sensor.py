@@ -5,7 +5,7 @@ count_input=0
 count_errors=0
 count_upper=0
 s=0
-maxm=-1000000
+maxm=-tc
 
 for i in range(n):
     a = input()
