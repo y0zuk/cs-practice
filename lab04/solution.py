@@ -21,3 +21,9 @@ def ranking(names: list[str], scores: list[float]) -> list[str]:
     """Return participant names ordered by descending score."""
     indices = sorted(range(len(names)), key=lambda index: scores[index], reverse=True)
     return [names[index] for index in indices]
+
+
+def above_average(names: list[str], scores: list[float]) -> list[str]:
+    """Return names of participants scoring strictly above the average."""
+    mean_score = average(scores)
+    return [name for name, score in zip(names, scores) if score > mean_score]
