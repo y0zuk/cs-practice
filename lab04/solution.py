@@ -21,6 +21,5 @@ def ranking(names: list[str], scores: list[float]) -> list[str]:
 
 
 def above_average(names: list[str], scores: list[float]) -> list[str]:
-    """Return names of participants scoring strictly above the average."""
     mean_score = average(scores)
     return [name for name, score in zip(names, scores) if score > mean_score]
