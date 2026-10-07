@@ -15,3 +15,9 @@ def average(scores: list[float]) -> float:
     if not scores:
         return 0.0
     return round(sum(scores) / len(scores), 2)
+
+
+def ranking(names: list[str], scores: list[float]) -> list[str]:
+    """Return participant names ordered by descending score."""
+    indices = sorted(range(len(names)), key=lambda index: scores[index], reverse=True)
+    return [names[index] for index in indices]
