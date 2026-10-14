@@ -1,6 +1,9 @@
-def read_rows(lines):
-    rows = []
-    headers = None
+from collections.abc import Iterable
+
+
+def read_rows(lines: Iterable[str]) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    headers: list[str] | None = None
 
     for line in lines:
         line = line.strip()
@@ -8,7 +11,7 @@ def read_rows(lines):
             continue
 
         fields = line.split(",")
-        values = []
+        values: list[str] = []
         for field in fields:
             values.append(field.strip())
 
@@ -19,7 +22,7 @@ def read_rows(lines):
         if len(values) != len(headers):
             continue
 
-        row = {}
+        row: dict[str, str] = {}
         for index in range(len(headers)):
             row[headers[index]] = values[index]
         rows.append(row)
@@ -27,8 +30,8 @@ def read_rows(lines):
     return rows
 
 
-def count_types(rows):
-    counts = {}
+def count_types(rows: list[dict[str, str]]) -> dict[str, int]:
+    counts: dict[str, int] = {}
 
     for row in rows:
         kind = row.get("тип")
@@ -43,7 +46,7 @@ def count_types(rows):
     return counts
 
 
-def total_minutes(rows, kind):
+def total_minutes(rows: list[dict[str, str]], kind: str) -> float:
     total = 0.0
 
     for row in rows:
@@ -65,8 +68,8 @@ def total_minutes(rows, kind):
     return round(total, 1)
 
 
-def to_csv(counts):
-    lines = ["тип,количество"]
+def to_csv(counts: dict[str, int]) -> str:
+    lines: list[str] = ["тип,количество"]
 
     kinds = sorted(counts)
     for kind in kinds:
