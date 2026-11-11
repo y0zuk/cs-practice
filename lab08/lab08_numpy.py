@@ -47,3 +47,73 @@ print("Первые две строки без первого столбца:\n"
 central_temperatures = temperatures[:2, 1:3]
 print("Центральный блок:\n", central_temperatures)
 print("Форма блока:", central_temperatures.shape)
+
+
+# Задание 4. Прямоугольные срезы.
+matrix = np.arange(1, 26).reshape(5, 5)
+
+print("\nЗадание 4. Прямоугольные срезы")
+fragment = matrix[:3, :]
+print("Первые три строки:\n", fragment)
+print("Форма:", fragment.shape)
+
+fragment = matrix[-2:, :]
+print("Последние две строки:\n", fragment)
+print("Форма:", fragment.shape)
+
+fragment = matrix[:, :2]
+print("Первые два столбца:\n", fragment)
+print("Форма:", fragment.shape)
+
+fragment = matrix[1:4, 2:5]
+print("Строки 1–3 и столбцы 2–4:\n", fragment)
+print("Форма:", fragment.shape)
+
+fragment = matrix[-2:, -2:]
+print("Правый нижний блок 2×2:\n", fragment)
+print("Форма:", fragment.shape)
+
+
+# Задание 5. Изменение массивов с помощью срезов.
+vector = np.array([10, 20, 30, 40, 50])
+vector[1:4] = 0
+print("\nПример изменения вектора:", vector)
+
+small_matrix = np.arange(1, 10).reshape(3, 3)
+small_matrix[0, :] = -1
+small_matrix[1:, 1:] = 9
+print("Пример изменения матрицы:\n", small_matrix)
+
+# copy() нужна, чтобы изменения не испортили исходный массив hours.
+changed_hours = hours.copy()
+changed_hours[2:5] = 99
+changed_hours[::2] = -1
+
+print("Изменённый hours:", changed_hours)
+print("Исходный hours:", hours)
+
+# Здесь тоже меняем копию, чтобы исходная матрица matrix сохранилась.
+changed_matrix = matrix.copy()
+changed_matrix[1, :] = 0
+changed_matrix[:, -1] = -1
+changed_matrix[1:4, 1:4] = 100
+
+print("Изменённая матрица:\n", changed_matrix)
+print("Исходная матрица:\n", matrix)
+
+
+# Задание 6. Изменение формы массива.
+numbers = np.arange(12)
+table = numbers.reshape(3, 4)
+transposed = table.T
+
+print("\nЗадание 6. Изменение формы")
+print("numbers:", numbers)
+print("Форма numbers:", numbers.shape)
+print("table:\n", table)
+print("Форма table:", table.shape)
+print("transposed:\n", transposed)
+print("Форма transposed:", transposed.shape)
+
+# reshape(3, 4) работает, потому что 3 * 4 = 12 элементов.
+# reshape(5, 3) выдаст ошибку, потому что 5 * 3 = 15, а элементов только 12.
